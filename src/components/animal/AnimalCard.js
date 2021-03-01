@@ -1,9 +1,12 @@
-import React from "react"
-import "./Animal.css"
+import React from "react";
+import "./Animal.css";
 
-export const AnimalCard = () => (
+export const AnimalCard = ({animalProp})=> {
+
+  return (
     <section className="animal">
-        <h3 className="animal__name">Doodles</h3>
-        <div className="animal__breed">Breed: Poodle</div>
+      <h3 className="animal__name">{animalProp.name}</h3>
+      <address className="location__address">{animalProp.location.name}</address>
     </section>
-)
+  );
+};
