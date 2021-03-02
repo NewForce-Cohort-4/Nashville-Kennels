@@ -3,7 +3,9 @@ import { AnimalContext } from "./AnimalProvider";
 import { AnimalCard } from "./AnimalCard";
 import {CustomerContext } from "../customer/CustomerProvider"
 import {LocationContext} from "../location/LocationProvider"
+import {useHistory} from "react-router-dom"
 import "./Animal.css";
+
 
 export const AnimalList = () => {
   // This state changes when `getAnimals()` is invoked below
@@ -12,6 +14,7 @@ export const AnimalList = () => {
   const {customers, getCustomers} = useContext(CustomerContext)
   const {locations, getLocations} = useContext(LocationContext)
 
+  const history = useHistory()
 
   //useEffect - reach out to the world for something
   useEffect(() => {
@@ -26,6 +29,11 @@ export const AnimalList = () => {
   //   }, [animals])
 
   return (
+    <>
+    <h2>Animals</h2>
+		<button onClick={() => {history.push("/animals/create")}}>
+            Add Animal
+        </button>
     <div className="animals">
       {animals.map((singleAnimalInLoop) => {
         const owner = customers.find(singleCustomer => singleCustomer.id === singleAnimalInLoop.customerId)
@@ -35,5 +43,6 @@ export const AnimalList = () => {
         return <AnimalCard key={singleAnimalInLoop.id} kennelOfResidence={location} ownerProp={owner} animalProp={singleAnimalInLoop} />;
       })}
     </div>
+    </>
   );
 };

@@ -25,7 +25,7 @@ export const AnimalProvider = (props) => {
             },
             body: JSON.stringify(animalObj)
         })
-        .then(getAnimals)
+        .then(response => response.json())
     }
 
     /*
@@ -36,7 +36,7 @@ export const AnimalProvider = (props) => {
     */
     return (
         <AnimalContext.Provider value={{
-            animals, getAnimals
+            animals, getAnimals, addAnimal
         }}>
             {props.children}
         </AnimalContext.Provider>
