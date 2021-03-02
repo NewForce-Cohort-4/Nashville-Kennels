@@ -1,17 +1,22 @@
 import React, { useContext, useEffect } from "react";
 import { AnimalContext } from "./AnimalProvider";
 import { AnimalCard } from "./AnimalCard";
+import {CustomerContext } from "../customer/CustomerProvider"
+import {LocationContext} from "../location/LocationProvider"
 import "./Animal.css";
 
 export const AnimalList = () => {
   // This state changes when `getAnimals()` is invoked below
   // This is basically a magical import statement: import {getAnimals, useAnimals} from "./AnimalProvider.js"
   const { animals, getAnimals } = useContext(AnimalContext);
+  const {customers, getCustomers} = useContext(CustomerContext)
+  const {locations, getLocations} = useContext(LocationContext)
+
 
   //useEffect - reach out to the world for something
   useEffect(() => {
     console.log("AnimalList: useEffect - getAnimals");
-    getAnimals();
+    getLocations().then(getCustomers).then(getAnimals)
   }, []);
 
   // This will run every time we change the animals state!
@@ -23,8 +28,11 @@ export const AnimalList = () => {
   return (
     <div className="animals">
       {animals.map((singleAnimalInLoop) => {
+        const owner = customers.find(singleCustomer => singleCustomer.id === singleAnimalInLoop.customerId)
+        const location = locations.find(singleLocation => singleLocation.id === singleAnimalInLoop.locationId)
         //return AnimalCard(singleAnimalInLoop)
-        return <AnimalCard key={singleAnimalInLoop.id} animalProp={singleAnimalInLoop} />;
+        console.log("this should be matching entries from other tables", owner, location)
+        return <AnimalCard key={singleAnimalInLoop.id} kennelOfResidence={location} ownerProp={owner} animalProp={singleAnimalInLoop} />;
       })}
     </div>
   );

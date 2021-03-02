@@ -17,7 +17,6 @@ export const LocationProvider = (props) => {
             .then(res => res.json())
             .then((data) => {
                 console.log(locations)
-                debugger
                 setLocations(data)
             })
     }
