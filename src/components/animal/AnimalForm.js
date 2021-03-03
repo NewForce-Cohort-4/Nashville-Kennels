@@ -16,7 +16,7 @@ export const AnimalForm = () => {
     Define the intial state of the form inputs with useState()
     */
 
-    const [animal, setAnimal] = useState({
+    const [animalState, setAnimalState] = useState({
       name: "",
       breed:"",
       locationId: 0,
@@ -38,32 +38,39 @@ export const AnimalForm = () => {
     const handleControlledInputChange = (event) => {
       /* When changing a state object or array,
       always create a copy, make changes, and then set state.*/
-      const newAnimal = { ...animal }
+      const copyOfAnimalState = {...animalState}
+
       /* Animal is an object with properties.
       Set the property to the new value
       using object bracket notation. */
-      newAnimal[event.target.id] = event.target.value
+      copyOfAnimalState[event.target.id] = event.target.value
+      debugger
       // update state
-      setAnimal(newAnimal)
+      setAnimalState(copyOfAnimalState)
     }
 
+
+
+
+
     const handleClickSaveAnimal = (event) => {
-      event.preventDefault() //Prevents the browser from submitting the form
+ 
+      // event.preventDefault() //Prevents the browser from submitting the form
 
-      const locationId = parseInt(animal.locationId)
-      const customerId = parseInt(animal.customerId)
+      // const locationId = parseInt(animal.locationId)
+      // const customerId = parseInt(animal.customerId)
 
-      animal.locationId = locationId
-      animal.customerId = customerId
+      // animal.locationId = locationId
+      // animal.customerId = customerId
 
-      if (locationId === 0) {
-        window.alert("Please select a location")
-      } else {
-        //invoke addAnimal passing animal as an argument.
-        //once complete, change the url and display the animal list
-        addAnimal(animal)
-        .then(() => history.push("/animals"))
-      }
+      // if (locationId === 0) {
+      //   window.alert("Please select a location")
+      // } else {
+      //   //invoke addAnimal passing animal as an argument.
+      //   //once complete, change the url and display the animal list
+      //   addAnimal(animal)
+      //   .then(() => history.push("/animals"))
+      // }
     }
 
     return (
@@ -72,19 +79,19 @@ export const AnimalForm = () => {
           <fieldset>
               <div className="form-group">
                   <label htmlFor="name">Animal name:</label>
-                  <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Animal name" value={animal.name}/>
+                  <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Animal name" value={animalState.name}/>
               </div>
           </fieldset>
           <fieldset>
               <div className="form-group">
                   <label htmlFor="name">Animal breed:</label>
-                  <input type="text" id="breed" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Animal breed" value={animal.breed}/>
+                  <input type="text" id="breed" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Animal breed" value={animalState.breed}/>
               </div>
           </fieldset>
           <fieldset>
               <div className="form-group">
                   <label htmlFor="location">Assign to location: </label>
-                  <select defaultValue={animal.locationId} name="locationId" id="locationId"
+                  <select defaultValue={animalState.locationId} name="locationId" id="locationId"
                   onChange={handleControlledInputChange}className="form-control" >
                       <option value="0">Select a location</option>
                       {locations.map(l => (
@@ -98,7 +105,7 @@ export const AnimalForm = () => {
           <fieldset>
               <div className="form-group">
                   <label htmlFor="customerId">Customer: </label>
-                  <select defaultValue={animal.customerId} name="customer" id="customerId"
+                  <select defaultValue={animalState.customerId} name="customer" id="customerId"
                   onChange={handleControlledInputChange}className="form-control" >
                       <option value="0">Select a customer</option>
                       {customers.map(c => (

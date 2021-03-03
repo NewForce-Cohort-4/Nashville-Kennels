@@ -16,9 +16,9 @@
   ],
   "customers": [
     {
-      "id": 1,
-      "name": "Hannah Hall",
-      "address": "7002 Chestnut Ct"
+      "email": "j@j.com",
+      "name": "Jordan Castelloe",
+      "id": 1
     }
   ],
   "employees": [],

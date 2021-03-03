@@ -1,14 +1,11 @@
 import React from "react";
 import "./Animal.css";
+import { Link } from "react-router-dom"
 
-export const AnimalCard = ({animalProp, ownerProp, kennelOfResidence})=> {
-
+export function AnimalCard({ animalProp }) {
   return (
     <section className="animal">
-      <h3 className="animal__name">{animalProp.name}</h3>
-      <p>{ownerProp.name}</p>
-      <p>{kennelOfResidence.name}</p>
-      {/* <address className="location__address">{animalProp.location.name}</address> */}
+      <Link to={`/animals/detail/${animalProp.id}`}>{animalProp.name}</Link>
     </section>
   );
-};
+}
