@@ -3,6 +3,7 @@ import { AnimalContext } from "./AnimalProvider";
 import { AnimalCard } from "./AnimalCard";
 import { useHistory } from "react-router-dom";
 import "./Animal.css";
+// import {getAnimals, useAnimals} from "./AnimalProvider"
 
 export const AnimalList = () => {
   // This state changes when `getAnimals()` is invoked below
@@ -35,6 +36,7 @@ export const AnimalList = () => {
             <AnimalCard
               key={singleAnimalInLoop.id}
               animalProp={singleAnimalInLoop}
+              darkMode={true}
             />
           );
         })}

@@ -6,15 +6,18 @@ import { useParams, useHistory } from "react-router-dom";
 export const AnimalDetail = () => {
   const { getAnimalById } = useContext(AnimalContext);
 
-  const [animal, setAnimal] = useState({});
 
+ const [animal, setAnimal] = useState({});
   const { animalId } = useParams();
-  const history = useHistory();
+  //   const history = useHistory();
+
+
 
   useEffect(() => {
     console.log("useEffect", animalId);
-    getAnimalById(animalId).then((response) => {
-      setAnimal(response);
+    getAnimalById(animalId).then((animalObject) => {
+      console.log("what comes back from get animal by id?", animalObject);
+      setAnimal(animalObject);
     });
   }, []);
 

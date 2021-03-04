@@ -25,6 +25,7 @@ export const ApplicationViews = () => {
         <Route exact path="/animals">
           <AnimalList />
         </Route>
+
         <CustomerProvider>
           <LocationProvider>
             <Route exact path="/animals/create">
@@ -32,6 +33,7 @@ export const ApplicationViews = () => {
             </Route>
           </LocationProvider>
         </CustomerProvider>
+
       </AnimalProvider>
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react";
+import { AnimalList } from "./AnimalList";
 
 // The context is imported and used by individual components that need data
 export const AnimalContext = createContext();
@@ -7,13 +8,14 @@ export const AnimalContext = createContext();
 export const AnimalProvider = (props) => {
   const [animals, setAnimals] = useState([]);
 
-  //let animals = []
 
   const getAnimals = () => {
     return fetch("http://localhost:8088/animals")
       .then((res) => res.json())
       .then((parsedAnimals) => {
-        setAnimals(parsedAnimals);
+        //   animals = parsedAnimals
+          setAnimals(parsedAnimals);
+
       });
   };
   const getAnimalById = (id) => {

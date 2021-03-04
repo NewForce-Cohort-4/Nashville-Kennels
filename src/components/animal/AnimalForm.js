@@ -54,23 +54,23 @@ export const AnimalForm = () => {
 
 
     const handleClickSaveAnimal = (event) => {
- 
-      // event.preventDefault() //Prevents the browser from submitting the form
 
-      // const locationId = parseInt(animal.locationId)
-      // const customerId = parseInt(animal.customerId)
+    //   event.preventDefault() //Prevents the browser from submitting the form
 
-      // animal.locationId = locationId
-      // animal.customerId = customerId
+    //   const locationId = parseInt(animal.locationId)
+    //   const customerId = parseInt(animal.customerId)
 
-      // if (locationId === 0) {
-      //   window.alert("Please select a location")
-      // } else {
-      //   //invoke addAnimal passing animal as an argument.
-      //   //once complete, change the url and display the animal list
-      //   addAnimal(animal)
-      //   .then(() => history.push("/animals"))
-      // }
+    //   animal.locationId = locationId
+    //   animal.customerId = customerId
+
+    //   if (locationId === 0) {
+    //     window.alert("Please select a location")
+    //   } else {
+    //     //invoke addAnimal passing animal as an argument.
+    //     //once complete, change the url and display the animal list
+    //     addAnimal(animal)
+    //     .then(() => history.push("/animals"))
+    //   }
     }
 
     return (
