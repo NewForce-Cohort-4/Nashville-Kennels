@@ -44,7 +44,7 @@ export const AnimalForm = () => {
       Set the property to the new value
       using object bracket notation. */
       copyOfAnimalState[event.target.id] = event.target.value
-      debugger
+
       // update state
       setAnimalState(copyOfAnimalState)
     }
@@ -55,22 +55,22 @@ export const AnimalForm = () => {
 
     const handleClickSaveAnimal = (event) => {
 
-    //   event.preventDefault() //Prevents the browser from submitting the form
+      event.preventDefault() //Prevents the browser from submitting the form
 
-    //   const locationId = parseInt(animal.locationId)
-    //   const customerId = parseInt(animal.customerId)
+      const locationId = parseInt(animalState.locationId)
+      const customerId = parseInt(animalState.customerId)
 
-    //   animal.locationId = locationId
-    //   animal.customerId = customerId
+      animalState.locationId = locationId
+      animalState.customerId = customerId
 
-    //   if (locationId === 0) {
-    //     window.alert("Please select a location")
-    //   } else {
-    //     //invoke addAnimal passing animal as an argument.
-    //     //once complete, change the url and display the animal list
-    //     addAnimal(animal)
-    //     .then(() => history.push("/animals"))
-    //   }
+      if (locationId === 0) {
+        window.alert("Please select a location")
+      } else {
+        //invoke addAnimal passing animal as an argument.
+        //once complete, change the url and display the animal list
+        addAnimal(animalState)
+        .then(() => history.push("/animals"))
+      }
     }
 
     return (

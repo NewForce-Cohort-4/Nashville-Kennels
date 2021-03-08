@@ -1,17 +1,18 @@
 {
   "animals": [
     {
-      "id": 1,
-      "name": "Doodles",
-      "breed": "Poodle",
+      "name": "Greg",
+      "breed": "German Shedadadperd",
+      "locationId": 2,
       "customerId": 1,
-      "locationId": 2
+      "id": 4
     },
     {
-      "name": "Greg",
+      "name": "Doodles",
+      "breed": "Golden Doodle",
       "locationId": 1,
       "customerId": 1,
-      "id": 2
+      "id": 5
     }
   ],
   "customers": [
